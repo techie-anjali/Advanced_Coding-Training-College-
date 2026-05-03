@@ -1,0 +1,44 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        
+        String s = sc.next();
+        int n = s.length();
+
+        
+        String t = s + s;
+
+        int sum = 0;
+        int ans = 0;
+
+        HashSet<Character> hs = new HashSet<>();
+
+        int left = 0; 
+
+        
+        for (int i = 0; i < t.length(); i++) {
+
+            char ch = t.charAt(i);
+
+            
+            while (hs.contains(ch) || (i - left + 1) > n) {
+                char remove = t.charAt(left);
+                hs.remove(remove);
+                sum -= (remove - 'a' + 1);
+                left++;
+            }
+
+           
+            hs.add(ch);
+            sum += (ch - 'a' + 1);
+
+            ans = Math.max(ans, sum);
+        }
+
+        
+        System.out.println(ans);
+    }
+}
