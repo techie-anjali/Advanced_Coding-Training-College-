@@ -1,14 +1,28 @@
   Problem 1: Cyclic Substring Maximum Sum
 Description:
 Find the maximum sum of a cyclic substring in a given array/string.
-Approach:
-Used variation of Kadane’s Algorithm
-Handled circular nature by combining:
-Normal max subarray
-Total sum - min subarray
+ 
+ 
+ Algorithm Steps
+Duplicate string → t = s + s (to handle circular substrings)
+Use two pointers (left, right) for sliding window
+Maintain a HashSet to ensure unique characters
+If:
+Character already exists OR
+Window size exceeds n
+→ shrink window from left
+Add current character and update sum
+Track maximum sum
 
+Character weight:
+value = ch - 'a' + 1
+Maintain:
+currentSum → current window sum
+maxSum → final answer
+ Complexity Analysis
 Time Complexity: O(n)
-Space Complexity: O(1)
+Space Complexity: O(1) (since at most 26 characters)
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
