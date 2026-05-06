@@ -1,0 +1,47 @@
+
+
+import java.util.*;
+
+public class Main {
+
+    public static int minOperations(int[] A, int K) {
+        int n = A.length;
+
+        
+        for (int i = 1; i < n; i++) {
+            if ((A[i] - A[0]) % K != 0) {
+                return -1;
+            }
+        }
+
+        Arrays.sort(A);
+
+        int median = A[n / 2];
+        int ops = 0;
+
+        for (int i = 0; i < n; i++) {
+            ops += Math.abs(A[i] - median) / K;
+        }
+
+        return ops;
+    }
+
+    // PSVM
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] A = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            A[i] = sc.nextInt();
+        }
+
+        int K = sc.nextInt();
+
+        int result = minOperations(A, K);
+        System.out.println(result);
+
+        sc.close();
+    }
+}
